@@ -28,9 +28,11 @@ const MediaPlayer = ({ sources }) => {
             controls={true}
             style={{ width: '320px', height: '180px' }}
         >
-            {sortedSources.map((source, index) => (
-                <source key={`source-${index}`} src={source.location} type={getType(source)} />
-            ))}
+            {sortedSources.map((source, index) => {
+                const { location } = source;
+                const type = getType(source);
+                return <source key={`source-${index}`} src={location} type={type} />;
+            })}
         </video>
     );
 };
